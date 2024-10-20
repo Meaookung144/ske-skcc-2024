@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Change Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .status {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Status Change Page</h1>
+    <div class="status">
+        <p>Current Status: <span id="currentStatus">Inactive</span></p>
+    </div>
+    <button onclick="changeStatus()">Change Status</button>
+
+    <script>
+        fetch('config.json')
+            .then(response => response.json())
+            .then(data => {
+            let status = data.status;
+
+            function changeStatus() {
+                status = (status === "current") ? "same" : "current";
+
+                const fs = require('fs');
+                const jsonData = require('./config.json');
+                jsonData.status = status;
+                fs.writeFileSync('./config.json', JSON.stringify(jsonData, null, 2));
+
+                console.log('Data updated successfully.');
+
+            }
+
+            document.getElementById("currentStatus").innerText = status;
+            window.changeStatus = changeStatus;
+            })
+            .catch(error => console.error('Error:', error));            
+    </script>
+</body>
+</html>

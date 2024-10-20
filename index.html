@@ -17,14 +17,22 @@
     }
 </style>
 <body>
+    <div id="image"></div>
     <div id="content"></div>
-    <div id="image" class=""></div>
-
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
 
-        document.getElementById('content').innerText = 'Page ID : ' + id;
+        const textOverlay = document.createElement('div');
+        textOverlay.innerText = 'Page ID : ' + id;
+        textOverlay.style.position = 'absolute';
+        textOverlay.style.top = '25px';
+        textOverlay.style.left = '25px';
+        textOverlay.style.color = 'white';
+        textOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        textOverlay.style.padding = '1px';
+        textOverlay.style.borderRadius = '1px';
+        document.getElementById('image').appendChild(textOverlay);
         const images = {
             '1': '1.png'
         };
@@ -32,6 +40,9 @@
             const img = document.createElement('img');
             img.src = 'image/' + images[id];
             img.alt = 'Image for ID ' + id;
+            img.style.width = '100vw';
+            img.style.height = '100vh';
+            img.style.objectFit = 'cover';
             document.getElementById('image').appendChild(img);
         } else {
             document.getElementById('image').innerText += '\nImage not found';
@@ -43,6 +54,28 @@
         } else {
             console.log('Fullscreen API is not supported by this browser.');
         }
+        document.body.style.overflow = 'hidden';
+        setInterval(() => {
+            fetch('config.json')
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'same') {
+                const img = document.querySelector('#image img');
+                if (img) {
+                    img.src = 'image/default.png';
+                } else {
+                    const newImg = document.createElement('img');
+                    newImg.src = 'image/default.png';
+                    newImg.alt = 'Default Image';
+                    newImg.style.width = '100vw';
+                    newImg.style.height = '100vh';
+                    newImg.style.objectFit = 'cover';
+                    document.getElementById('image').appendChild(newImg);
+                }
+                }
+            })
+            .catch(error => console.error('Error fetching config.json:', error));
+        }, 1000);
     </script>
 </body>
 </html>
