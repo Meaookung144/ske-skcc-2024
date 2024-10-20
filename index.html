@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai&display=swap" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.tailwindcss.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.tailwindcss.css">
+</head>
+<style>
+    body{
+        background-color: black;
+        color: white;
+        font-family: 'IBM Plex Sans Thai', sans-serif;
+        font-size: small;
+    }
+</style>
+<body>
+    <div id="content"></div>
+    <div id="image" class=""></div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        document.getElementById('content').innerText = 'Page ID : ' + id;
+        const images = {
+            '1': '1.png'
+        };
+        if (images[id]) {
+            const img = document.createElement('img');
+            img.src = 'image/' + images[id];
+            img.alt = 'Image for ID ' + id;
+            document.getElementById('image').appendChild(img);
+        } else {
+            document.getElementById('image').innerText += '\nImage not found';
+        }
+        if (document.documentElement.requestFullscreen) {
+            document.documentElement.requestFullscreen().catch(err => {
+                console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+            });
+        } else {
+            console.log('Fullscreen API is not supported by this browser.');
+        }
+    </script>
+</body>
+</html>
