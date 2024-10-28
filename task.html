@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Playground - Task Submission</title>
+  <link rel="stylesheet" href="task.css">
+  <script src="https://cdn.datatables.net/1.13.6/js/dataTables.tailwindcss.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.tailwindcss.css">
+</head>
+<body class="task-page"> <!-- Added "task-page" class here -->
+  <div class="container">
+    <h1>Submit Your Answers</h1>
+
+    <div class="task-container">
+      <!-- Task 1 -->
+      <h2>Task 1</h2>
+      <label for="task-1-answer">1.1 Encode your name using Caesar Cipher with +3 shift:</label>
+      <input type="text" id="task-1-answer" required>
+      <button onclick="submitAnswer('task-1')">Submit Task 1</button>
+      <div id="feedback-task-1"></div>
+    </div>
+
+    <div class="task-container">
+      <!-- Task 2 -->
+      <h2>Task 2</h2>
+      <label for="task-2-answer">2.1 Decode the ASCII sequence “83 99 104 111 111 108”:</label>
+      <input type="text" id="task-2-answer" required>
+      <button onclick="submitAnswer('task-2')">Submit Task 2</button>
+      <div id="feedback-task-2"></div>
+    </div>
+
+    <div class="task-container">
+      <!-- Task 3 -->
+      <h2>Task 3</h2>
+      <label for="task-3-answer">3.1 Decode the binary sequence “01000010 01001001 01001110 01000001 01010010 0101100”:</label>
+      <input type="text" id="task-3-answer" required>
+      <button onclick="submitAnswer('task-3')">Submit Task 3</button>
+      <div id="feedback-task-3"></div>
+    </div>
+    
+  </div>
+  <script src="task.js"></script>
+</body>
+</html>

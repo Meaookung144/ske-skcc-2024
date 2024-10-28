@@ -1,0 +1,81 @@
+/* Resetting Default Margin and Padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Base Styling for Body */
+  body, html {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2d2d2d; /* Changed to a solid grey background */
+    color: #e6e6e6;
+  }
+  
+  /* Specific background and layout for task.html */
+  .task-page {
+    background-color: #1a1a2e; /* Solid background color for task.html */
+    display: block; /* Remove centering for a simpler layout */
+    padding: 20px;
+    color: #e6e6e6;
+  }
+  
+  .task-page h1 {
+    text-align: left;
+    font-size: 2em;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+  
+  .task-page h2 {
+    font-size: 1.5em;
+    color: #00ffaa;
+    margin: 20px 0 10px;
+  }
+  
+  .task-page label {
+    display: block;
+    font-size: 1em;
+    color: #cccccc;
+    margin-top: 10px;
+  }
+  
+  .task-page input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1em;
+    color: #ffffff;
+    background: #333;
+    border: 1px solid #00ffaa;
+    border-radius: 5px;
+  }
+  
+  .task-page button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 1em;
+    color: #ffffff;
+    background: #00ffaa;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .task-page button:hover {
+    background-color: #00d4ff;
+  }
+  
+  .task-page #feedback-task-1,
+  .task-page #feedback-task-2,
+  .task-page #feedback-task-3 {
+    font-size: 0.9em;
+    color: #00ffaa;
+    margin-top: 5px;
+  }
+  
